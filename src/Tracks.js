@@ -9,13 +9,11 @@ const GET_TRACKS = gql`
       id
       title
       artist
-      genre
-      duration
     }
   }
 `;
 
-export default () => {
+export default (props) => {
   const { loading, error, data } = useQuery(GET_TRACKS);
 
   if (loading) {
@@ -45,11 +43,11 @@ export default () => {
       </thead>
       <tbody>
         {data.tracks.map(track => (
-          <tr key={track.artist}>
+          <tr key={track.id}>
             <td>{track.artist}</td>
             <td>{track.title}</td>
             <td>
-              <Button color="primary">
+              <Button onClick={() => props.setState(track.id)}>
                 View
               </Button>
             </td>
