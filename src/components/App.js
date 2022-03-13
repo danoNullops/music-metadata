@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { BsSoundwave } from 'react-icons/bs';
 import Tracks from './Tracks';
 import Track from './Track';
@@ -21,9 +21,20 @@ class App extends Component {
           </Row>
           <Row>
             {!id ? (
-              <Tracks setState={id => this.setState({ id })} />
+              <Tracks setId={id => this.setState({ id })} />
             ) : (
-              <Track id={id} setState={() => this.setState({ id: null })} />
+              <Col
+                sm={{
+                  offset: 4,
+                  size: 4
+                }}
+                xs={{
+                  offset: 2,
+                  size: 8
+                }}
+              >
+                <Track id={id} unsetId={() => this.setState({ id: null })} />
+              </Col>
             )}
           </Row>
         </Container>

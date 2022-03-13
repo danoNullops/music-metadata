@@ -69,6 +69,20 @@
             "artist": "Van Morrison",
             "genre": "Rock",
             "duration": 415000
+        },
+        {
+            "id": 10,
+            "title": "Friend of the Devil",
+            "artist": "Grateful Dead",
+            "genre": "Rock",
+            "duration": 203000
+        },
+        {
+            "id": 11,
+            "title": "Lonely Boy",
+            "artist": "The Black Keys",
+            "genre": "Blues Rock",
+            "duration": 195000
         }
     ]
 }

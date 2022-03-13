@@ -13,14 +13,16 @@ const GET_TRACKS = gql`
   }
 `;
 
-export default (props) => {
+const Tracks = props => {
   const { loading, error, data } = useQuery(GET_TRACKS);
 
   if (loading) {
     return (
-      <Spinner>
-        Loading...
-      </Spinner>
+      <div className="text-center">
+        <Spinner>
+          Loading...
+        </Spinner>
+      </div>
     );
   }
 
@@ -32,6 +34,14 @@ export default (props) => {
     );
   }
 
+  const tracks = [...data.tracks].sort((a, b) => {
+    if (a.artist === b.artist) {
+      if (a.title > b.title) return 1;
+      if (a.title < b.title) return -1;
+    }
+    return a.artist > b.artist ? 1 : -1;
+  });
+
   return (
     <Table hover responsive>
       <thead>
@@ -42,12 +52,12 @@ export default (props) => {
         </tr>
       </thead>
       <tbody>
-        {data.tracks.map(track => (
+        {tracks.map(track => (
           <tr key={track.id}>
             <td>{track.artist}</td>
             <td>{track.title}</td>
             <td>
-              <Button onClick={() => props.setState(track.id)}>
+              <Button onClick={() => props.setId(track.id)}>
                 View
               </Button>
             </td>
@@ -57,3 +67,5 @@ export default (props) => {
     </Table>
   );
 }
+
+export default Tracks;

@@ -21,14 +21,16 @@ const timeFormat = ms => {
   return `${min}:${sec}`;
 };
 
-export default (props) => {
+const Track = props => {
   const { loading, error, data } = useQuery(GET_TRACK_BY_ID(props.id));
 
   if (loading) {
     return (
-      <Spinner>
-        Loading...
-      </Spinner>
+      <div className="text-center">
+        <Spinner>
+          Loading...
+        </Spinner>
+      </div>
     );
   }
 
@@ -44,29 +46,41 @@ export default (props) => {
 
   return (
     <div>
-      <Table>
+      <Table borderless>
         <tbody>
           <tr>
-            <td>Artist:</td>
+            <td className="fw-bold">
+              Artist:
+            </td>
             <td>{artist}</td>
           </tr>
           <tr>
-            <td>Title:</td>
+            <td className="fw-bold">
+              Title:
+            </td>
             <td>{title}</td>
           </tr>
           <tr>
-            <td>Genre:</td>
+            <td className="fw-bold">
+              Genre:
+            </td>
             <td>{genre}</td>
           </tr>
           <tr>
-            <td>Duration:</td>
+            <td className="fw-bold">
+              Duration:
+            </td>
             <td>{timeFormat(duration)}</td>
           </tr>
         </tbody>
       </Table>
-      <Button onClick={() => props.setState()}>
-        Back
-      </Button>
+      <div className="text-center p-5">
+        <Button onClick={() => props.unsetId()}>
+          Back
+        </Button>
+      </div>
     </div>
   );
 };
+
+export default Track;
