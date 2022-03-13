@@ -1,0 +1,74 @@
+{
+    "tracks": [
+        {
+            "id": 0,
+            "title": "Angel of Death",
+            "artist": "Hank Williams",
+            "genre": "Country",
+            "duration": 143000
+        },
+        {
+            "id": 1,
+            "title": "People Are Strange",
+            "artist": "The Doors",
+            "genre": "Rock",
+            "duration": 132000
+        },
+        {
+            "id": 2,
+            "title": "Big Iron",
+            "artist": "Marty Robbins",
+            "genre": "Western",
+            "duration": 235000
+        },
+        {
+            "id": 3,
+            "title": "Everlasting Light",
+            "artist": "The Black Keys",
+            "genre": "Blues Rock",
+            "duration": 205000
+        },
+        {
+            "id": 4,
+            "title": "Angel",
+            "artist": "Massive Attack",
+            "genre": "Electronic",
+            "duration": 324000
+        },
+        {
+            "id": 5,
+            "title": "Life",
+            "artist": "Health",
+            "genre": "Noise Rock",
+            "duration": 233000
+        },
+        {
+            "id": 6,
+            "title": "Ship of Fools",
+            "artist": "Grateful Dead",
+            "genre": "Rock",
+            "duration": 326000
+        },
+        {
+            "id": 7,
+            "title": "Meet Me in the Alleyway",
+            "artist": "Steve Earle",
+            "genre": "Rock",
+            "duration": 265000
+        },
+        {
+            "id": 8,
+            "title": "Down In It",
+            "artist": "Nine Inch Nails",
+            "genre": "Industrial",
+            "duration": 226000
+        },
+        {
+            "id": 9,
+            "title": "Tupelo Honey",
+            "artist": "Van Morrison",
+            "genre": "Rock",
+            "duration": 415000
+        }
+    ]
+}
