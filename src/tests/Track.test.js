@@ -33,7 +33,7 @@ test('renders without error', () => {
 
 test('should render loading state initially', () => {
   render(
-    <MockedProvider mocks={[]}>
+    <MockedProvider mocks={[]} addTypename={false}>
       <Track id={0} unsetId={jest.fn()} />
     </MockedProvider>,
   );
@@ -53,4 +53,27 @@ test('should render track', async() => {
   });
 
   expect(screen.getByText('Angel of Death')).toBeInTheDocument();
+});
+
+test('should render error', async () => {
+  const errorMocks = [
+    {
+      request: {
+        query: GET_TRACK_BY_ID,
+        variables: { id: 500 }
+      },
+      error: new Error('oh no')
+    }
+  ];
+  render(
+    <MockedProvider mocks={errorMocks} addTypename={false}>
+      <Track id={500} unsetId={jest.fn()} />
+    </MockedProvider>
+  );
+
+  await act(async() => {
+    await wait(0);
+  });
+
+  expect(screen.getByText('Error: oh no')).toBeInTheDocument();
 });

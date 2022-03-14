@@ -42,7 +42,7 @@ test('renders without error', () => {
 
 test('should render loading state initially', () => {
   render(
-    <MockedProvider mocks={[]}>
+    <MockedProvider mocks={[]} addTypename={false}>
       <Tracks setId={jest.fn()} />
     </MockedProvider>,
   );
@@ -62,4 +62,26 @@ test('should render tracks', async () => {
   });
 
   expect(screen.getByText('Hank Williams')).toBeInTheDocument();
+});
+
+test('should render error', async () => {
+  const errorMocks = [
+    {
+      request: {
+        query: GET_TRACKS
+      },
+      error: new Error('oh no')
+    }
+  ];
+  render(
+    <MockedProvider mocks={errorMocks} addTypename={false}>
+      <Tracks setId={jest.fn()} />
+    </MockedProvider>
+  );
+
+  await act(async() => {
+    await wait(0);
+  });
+
+  expect(screen.getByText('Error: oh no')).toBeInTheDocument();
 });
