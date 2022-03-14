@@ -37,7 +37,6 @@ Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
 
 ### `yarn test`
 
-Tests are currently not implemented. Will be added soon.\
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 

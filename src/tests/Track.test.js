@@ -1,6 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import { MockedProvider } from "@apollo/react-testing";
+import wait from 'waait';
 import Track, { GET_TRACK_BY_ID } from '../components/Track';
+
 
 const mocks = [
   {
@@ -10,7 +12,7 @@ const mocks = [
     },
     result: {
       data: {
-        track: {
+        trackById: {
           "title": "Angel of Death",
           "artist": "Hank Williams",
           "genre": "Country",
@@ -23,8 +25,32 @@ const mocks = [
 
 test('renders without error', () => {
   render(
-    <MockedProvider mocks={mocks}>
-      <Track id={0} unsetId={() => true} />
+    <MockedProvider mocks={mocks} addTypename={false}>
+      <Track id={0} unsetId={jest.fn()} />
     </MockedProvider>
   );
+});
+
+test('should render loading state initially', () => {
+  render(
+    <MockedProvider mocks={[]}>
+      <Track id={0} unsetId={jest.fn()} />
+    </MockedProvider>,
+  );
+
+  expect(screen.getByText('Loading...')).toBeInTheDocument();
+});
+
+test('should render track', async() => {
+  render(
+    <MockedProvider mocks={mocks} addTypename={false}>
+      <Track id={0} unsetId={jest.fn()} />
+    </MockedProvider>
+  );
+
+  await act(async() => {
+    await wait(0);
+  });
+
+  expect(screen.getByText('Angel of Death')).toBeInTheDocument();
 });
