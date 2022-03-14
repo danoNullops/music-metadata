@@ -34,7 +34,8 @@ app.use(cors());
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
-  graphiql: !nodeEnv
+  // do not start graphql ide if production
+  graphiql: !(nodeEnv && nodeEnv === 'production')
 }));
 
 const path = require('path');
