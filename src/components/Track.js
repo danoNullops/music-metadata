@@ -3,9 +3,9 @@ import gql from 'graphql-tag';
 import { Table, Spinner, Alert, Button } from 'reactstrap';
 import { useQuery } from '@apollo/client';
 
-const GET_TRACK_BY_ID = id => gql`
-  query GetTrackById {
-    trackById(id: ${id}) {
+export const GET_TRACK_BY_ID = gql`
+  query GetTrackById($id: ID!) {
+    trackById(id: $id) {
       title
       artist
       genre
@@ -23,7 +23,11 @@ const durationFormat = ms => {
 };
 
 const Track = props => {
-  const { loading, error, data } = useQuery(GET_TRACK_BY_ID(props.id));
+  const { id } = props;
+  const { loading, error, data } = useQuery(
+    GET_TRACK_BY_ID,
+    { variables: { id } }
+  );
 
   if (loading) {
     return (

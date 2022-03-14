@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { Table, Spinner, Alert, Button } from 'reactstrap';
 import { useQuery } from '@apollo/client';
 
-const GET_TRACKS = gql`
+export const GET_TRACKS = gql`
   query GetTracks {
     tracks {
       id
