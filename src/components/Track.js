@@ -14,7 +14,8 @@ const GET_TRACK_BY_ID = id => gql`
   }
 `;
 
-const timeFormat = ms => {
+// format duration stored as milliseconds into minutes and seconds
+const durationFormat = ms => {
   const min = Math.floor(ms / 60000);
   let sec = ((ms % 60000) / 1000).toFixed(0);
   if (sec < 10) sec = 0;
@@ -70,7 +71,7 @@ const Track = props => {
             <td className="fw-bold">
               Duration:
             </td>
-            <td>{timeFormat(duration)}</td>
+            <td>{durationFormat(duration)}</td>
           </tr>
         </tbody>
       </Table>

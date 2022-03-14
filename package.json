@@ -23,8 +23,8 @@
   "scripts": {
     "start": "npm-run-all --parallel watch:server start:web",
     "start:web": "react-scripts start",
-    "start:server": "node src/server",
-    "watch:server": "nodemon --watch src/server src/server",
+    "start:server": "nodemon --watch src/server src/server",
+    "start:prod": "PORT=8080 NODE_ENV=production pm2 start src/server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

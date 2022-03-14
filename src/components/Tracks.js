@@ -34,6 +34,7 @@ const Tracks = props => {
     );
   }
 
+  // sort tracks by artist primary title secondary
   const tracks = [...data.tracks].sort((a, b) => {
     if (a.artist === b.artist) {
       if (a.title > b.title) return 1;

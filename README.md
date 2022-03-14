@@ -1,5 +1,9 @@
 # Getting Started with Music Metadata App
 
+To get started run ( `yarn install` ).\
+If you don't have yarn you can install with ( `npm install --global yarn` ).\
+To get quickly up and running just run the app with ( `yarn start` ).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -8,14 +12,32 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs both React app and GraphQL/express backend in development mode, including the GraphiQL tool.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.\
+Open GraphiQL at [http://localhost:4000/graphql](http://localhost:4000/graphql) to view in browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+### `yarn start:web`
+
+Runs only React app in development mode.
+
+### `yarn start:server`
+
+Runs only GraphQL/express backend in development mode, including the GraphiQL tool.
+
+### `yarn start:prod`
+
+Must run ( `yarn build` ) first.\
+Requires the process management daemon pm2. Install with ( `yarn global add pm2` ).
+
+Runs a basic production version of the app.\
+Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
+
 ### `yarn test`
 
+Tests are currently not implemented. Will be added soon.\
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
